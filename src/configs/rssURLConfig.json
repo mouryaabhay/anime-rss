@@ -64,13 +64,13 @@
       "articleType": "Series/volume Review",
       "url": "https://www.animenewsnetwork.com/review/rss.xml?ann-edition=in",
       "color": "#9333EA",
-      "enabled": true
+      "enabled": false
     },
     {
       "articleType": "Episode Review",
       "url": "https://www.animenewsnetwork.com/episode-review/rss.xml?ann-edition=in",
       "color": "#C026D3",
-      "enabled": true
+      "enabled": false
     },
     {
       "articleType": "The ANN Aftershow",
