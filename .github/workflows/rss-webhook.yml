@@ -1,0 +1,45 @@
+name: RSS Feed Webhook
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch RSS and send to Discord webhook
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RSS_MAX_FEED_COUNT: ${{ vars.RSS_MAX_FEED_COUNT }}
+        run: node ./src/webhookRssRunner.js
+
+      - name: Commit updated RSS timestamps
+        run: |
+          if git diff --quiet -- data/rssFeedTimestamps.json; then
+            echo "No timestamp changes to commit"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rssFeedTimestamps.json
+          git commit -m "chore: update RSS feed timestamps"
+          git push

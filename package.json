@@ -1,0 +1,20 @@
+{
+    "name": "yuki",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node ./src/index.js",
+        "rss:webhook": "node ./src/webhookRssRunner.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "axios": "^1.7.9",
+        "cheerio": "^1.0.0",
+        "discord.js": "^14.16.3",
+        "dotenv": "^16.4.7",
+        "rss-parser": "^3.13.0"
+    }
+}

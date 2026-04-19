@@ -1,0 +1,94 @@
+{
+  "rssUrls": [
+    {
+      "articleType": "Review",
+      "url": "https://www.animenewsnetwork.com/all-reviews/rss.xml?ann-edition=w",
+      "color": "#8B5CF6",
+      "enabled": true
+    },
+    {
+      "articleType": "Convention",
+      "url": "https://www.animenewsnetwork.com/convention/rss.xml?ann-edition=w",
+      "color": "#06B6D4",
+      "enabled": true
+    },
+    {
+      "articleType": "Interest",
+      "url": "https://www.animenewsnetwork.com/interest/rss.xml?ann-edition=w",
+      "color": "#F97316",
+      "enabled": true
+    },
+    {
+      "articleType": "News",
+      "url": "https://www.animenewsnetwork.com/news/rss.xml?ann-edition=w",
+      "color": "#3B82F6",
+      "enabled": true
+    },
+    {
+      "articleType": "Contests & Giveaways",
+      "url": "https://www.animenewsnetwork.com/win-stuff/rss.xml?ann-edition=in",
+      "color": "#10B981",
+      "enabled": false
+    },
+    {
+      "articleType": "Press Release",
+      "url": "https://www.animenewsnetwork.com/press-release/rss.xml?ann-edition=in",
+      "color": "#F59E0B",
+      "enabled": false
+    },
+    {
+      "articleType": "Interview",
+      "url": "https://www.animenewsnetwork.com/interview/rss.xml?ann-edition=in",
+      "color": "#A855F7",
+      "enabled": false
+    },
+    {
+      "articleType": "Anime Spotlight",
+      "url": "https://www.animenewsnetwork.com/anime-spotlight/rss.xml?ann-edition=in",
+      "color": "#EF4444",
+      "enabled": false
+    },
+    {
+      "articleType": "Preview Guide",
+      "url": "https://www.animenewsnetwork.com/preview-guide/rss.xml?ann-edition=in",
+      "color": "#14B8A6",
+      "enabled": false
+    },
+    {
+      "articleType": "Weekly Ranking",
+      "url": "https://www.animenewsnetwork.com/weekly-ranking/rss.xml?ann-edition=in",
+      "color": "#EAB308",
+      "enabled": false
+    },
+    {
+      "articleType": "Series/volume Review",
+      "url": "https://www.animenewsnetwork.com/review/rss.xml?ann-edition=in",
+      "color": "#9333EA",
+      "enabled": true
+    },
+    {
+      "articleType": "Episode Review",
+      "url": "https://www.animenewsnetwork.com/episode-review/rss.xml?ann-edition=in",
+      "color": "#C026D3",
+      "enabled": true
+    },
+    {
+      "articleType": "The ANN Aftershow",
+      "url": "https://www.animenewsnetwork.com/aftershow/rss.xml?ann-edition=in",
+      "color": "#6366F1",
+      "enabled": false
+    },
+    {
+      "articleType": "This Week in Games",
+      "url": "https://www.animenewsnetwork.com/the-x-button/rss.xml?ann-edition=in",
+      "color": "#22C55E",
+      "enabled": false
+    },
+    {
+      "articleType": "This Week in Anime",
+      "url": "https://www.animenewsnetwork.com/this-week-in-anime/rss.xml?ann-edition=in",
+      "color": "#EC4899",
+      "enabled": false
+    }
+  ]
+}
