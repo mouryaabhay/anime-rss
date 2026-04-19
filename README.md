@@ -12,7 +12,11 @@ A GitHub Actions RSS runner built to fetch RSS feeds from Anime News Network and
 
 - Fetches RSS feeds from Anime News Network.
 - Sends formatted feed updates through a Discord webhook.
-- Easy-to-read embeds with Open Graph images.
+- Easy-to-read embeds with intelligent image extraction:
+  1. First: `<img>` inside `<figure>` tags (hero images).
+  2. Then: Largest `<img>` on the page (by width × height area).
+  3. Fallback: `og:image` or `twitter:image` meta tags.
+- Persistent caching to avoid redundant image fetches.
 - Modular, lightweight, and designed for learning and experimentation.
 
 ---
@@ -45,10 +49,10 @@ The workflow runs on a schedule, posts new feed items to the webhook, and commit
 3. In **Secrets**, create:
 	- `DISCORD_WEBHOOK_URL` = your Discord webhook URL
 4. In **Variables**, create (optional overrides, defaults are in code):
-	- `RSS_RECENT_LOOKBACK_COUNT` = `10`
-	- `RSS_IMAGE_FETCH_RETRIES` = `3`
-	- `RSS_IMAGE_SUCCESS_TTL_HOURS` = `12` (allowed range in code: 6 to 24)
-	- `RSS_IMAGE_MISS_TTL_MINUTES` = `120`
+	- `RSS_RECENT_LOOKBACK_COUNT` = `32`
+	- `RSS_IMAGE_FETCH_RETRIES` = `5`
+	- `RSS_IMAGE_SUCCESS_TTL_HOURS` = `24` (allowed range in code: 6 to 24)
+	- `RSS_IMAGE_MISS_TTL_MINUTES` = `180`
 5. Go to **Settings** -> **Actions** -> **General**.
 6. Ensure **Workflow permissions** is set to **Read and write permissions** (required to commit `data/rssFeedTimestamps.json`).
 7. Go to the **Actions** tab, open **RSS Feed Webhook**, and click **Run workflow** once to verify setup.
@@ -79,10 +83,10 @@ Local execution is optional and intended for debugging only.
 
 ```env
 DISCORD_WEBHOOK_URL=
-RSS_RECENT_LOOKBACK_COUNT=10
-RSS_IMAGE_FETCH_RETRIES=3
-RSS_IMAGE_SUCCESS_TTL_HOURS=12
-RSS_IMAGE_MISS_TTL_MINUTES=120
+RSS_RECENT_LOOKBACK_COUNT=32
+RSS_IMAGE_FETCH_RETRIES=5
+RSS_IMAGE_SUCCESS_TTL_HOURS=24
+RSS_IMAGE_MISS_TTL_MINUTES=180
 ```
 
 2. Run:

@@ -115,8 +115,8 @@ async function fetchPageHTML(url) {
 }
 
 /**
- * Extracts the most relevant article image from ANN page HTML.
- * Order: OG/Twitter meta -> figure image -> largest valid image.
+ * Extracts the most relevant article image from page HTML.
+ * Priority order: figure img -> largest img on page -> og:image / twitter:image meta tags.
  */
 function extractImageFromHTML(html, url) {
   const $ = cheerio.load(html);
@@ -156,19 +156,12 @@ function extractImageFromHTML(html, url) {
     return normalizeUrl(src);
   };
 
-  // ANN pages commonly expose this reliably.
-  const ogImage =
-    $('meta[property="og:image"]').attr("content") ||
-    $('meta[property="og:image:secure_url"]').attr("content") ||
-    $('meta[name="twitter:image"]').attr("content") ||
-    null;
-  const normalizedOg = ogImage ? normalizeUrl(ogImage) : null;
-  if (normalizedOg) return normalizedOg;
-
+  // Priority 1: First <img> inside a <figure> tag (hero image).
   const figureImg = $("figure img").first();
   const figureSrc = extractImageSrc(figureImg);
   if (figureSrc) return figureSrc;
 
+  // Priority 2: The <img> with the largest width×height area on the page.
   const images = $("img")
     .map((_, el) => {
       const src = extractImageSrc(el);
@@ -183,7 +176,18 @@ function extractImageFromHTML(html, url) {
     .filter(Boolean);
 
   images.sort((a, b) => b.area - a.area);
-  return images.length > 0 ? images[0].url : null;
+  if (images.length > 0) return images[0].url;
+
+  // Priority 3: Fallback to og:image / twitter:image meta tags.
+  const ogImage =
+    $('meta[property="og:image"]').attr("content") ||
+    $('meta[property="og:image:secure_url"]').attr("content") ||
+    $('meta[name="twitter:image"]').attr("content") ||
+    null;
+  const normalizedOg = ogImage ? normalizeUrl(ogImage) : null;
+  if (normalizedOg) return normalizedOg;
+
+  return null;
 }
 
 /**
