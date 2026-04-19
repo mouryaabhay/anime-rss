@@ -9,8 +9,8 @@ Thank you for contributing. This repository runs a webhook-only RSS pipeline for
 1. **Fork the repository** and clone it locally:
 
 ```bash
-git clone https://github.com/mouryaabhay/rss-yuki.git
-cd rss-yuki
+git clone https://github.com/mouryaabhay/anime-rss.git
+cd anime-rss
 ````
 
 2. **Install dependencies:**
