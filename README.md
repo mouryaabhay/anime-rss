@@ -1,5 +1,7 @@
 # Anime RSS
 
+[![RSS Feed Webhook](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml/badge.svg)](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml)
+
 A GitHub Actions RSS runner built to fetch RSS feeds from Anime News Network and post formatted Discord messages through a webhook. The project is open-source under the MIT License and is intended for private, non-commercial use.
 
 ---
@@ -53,6 +55,17 @@ The workflow runs on a schedule, posts new feed items to the webhook, and commit
 
 - The schedule (`cron`) is configured in [`.github/workflows/rss-webhook.yml`](.github/workflows/rss-webhook.yml) and cannot be changed from repo Variables.
 - If a Variable is not set, the code-level defaults from [src/configs/config.js](src/configs/config.js) are used.
+
+### Check Workflow Status on GitHub Web
+
+1. Open your repository on GitHub and go to the **Actions** tab.
+2. Click **RSS Feed Webhook**.
+3. Check the latest run status:
+	- **In progress** (yellow dot)
+	- **Queued** (gray)
+	- **Success** (green)
+	- **Failed** (red)
+4. Click a run to view live logs and step-by-step progress.
 
 ---
 
