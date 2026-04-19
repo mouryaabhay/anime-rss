@@ -6,17 +6,14 @@ import {
   ActionRowBuilder,
 } from "discord.js";
 import config from "../configs/config.js";
-const { EMBED_COLORS } = config;
 const { RSS_FEED } = config;
 import { getArticleImage } from "../utils/rssUtils/functions/getArticleImage.js";
 import { sendEmbedWithImage } from "../utils/rssUtils/functions/sendEmbedWithImage.js";
 import { loadTimestamps, saveTimestamps } from "../utils/rssUtils/logging/rssFeedTimestampsLogger.js";
 import { sendSysErrorMessage } from "../utils/sysErrorEmbed.js";
 import { fileURLToPath } from "url";
-import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 class rssFeedService {
   constructor() {

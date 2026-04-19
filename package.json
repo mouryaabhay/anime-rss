@@ -1,11 +1,11 @@
 {
     "name": "yuki",
     "version": "1.0.0",
-    "main": "src/index.js",
+      "main": "src/webhookRssRunner.js",
     "type": "module",
     "scripts": {
-        "start": "node ./src/index.js",
-        "rss:webhook": "node ./src/webhookRssRunner.js"
+          "start": "node ./src/webhookRssRunner.js",
+          "rss:webhook": "node ./src/webhookRssRunner.js"
     },
     "author": "",
     "license": "ISC",

@@ -1,16 +1,15 @@
 # RSS Yuki
 
-A Discord bot built by @mouryaabhay to fetch RSS feeds from Anime News Network directly into your server. The bot is open-source under the MIT License and is intended for private, non-commercial use.
+A GitHub Actions RSS runner built by @mouryaabhay to fetch RSS feeds from Anime News Network and post formatted Discord messages through a webhook. The project is open-source under the MIT License and is intended for private, non-commercial use.
 
 ---
 
 ## Features
 
 - Fetches RSS feeds from Anime News Network.
-- Sends feed updates directly to Discord channels.
-- Supports multiple guilds with configurable channels.
+- Sends formatted feed updates through a Discord webhook.
 - Easy-to-read embeds with Open Graph images.
-- Modular, scalable, and designed for learning and experimentation.
+- Modular, lightweight, and designed for learning and experimentation.
 
 ---
 
@@ -32,50 +31,27 @@ npm install
 3. **Create a `.env` file** in the root directory with the following structure:
 
 ```env
-APP_TOKEN=your_bot_token_here
-
-# ✅ Guilds
-GUILD_IDS=
-DEV_GUILD_IDS=
-
-# ✅ Developers
-DEVELOPER_IDS=
-
-# ✅ Logging Channels
-INTERACTION_LOG_CHANNEL_ID=
-ERROR_LOG_CHANNEL_ID=
-
-# ✅ RSS Feed Config
-RSS_CHANNEL_ID=
-
 # Keep it above 10 to reduce load on RSS servers
 RSS_FETCH_INTERVAL_MINUTES=10
 
 # Keep it between 2–6 to avoid spam and rate limits on Discord
 RSS_MAX_FEED_COUNT=4
-
-# Optional: use a Discord webhook instead of the bot runtime
 DISCORD_WEBHOOK_URL=
 ```
 
-4. **Run the bot:**
+4. **Run the webhook runner:**
 
 ```bash
-node ./src/index.js
+npm run start
 ```
 
 ---
 
 ## Configuration
 
-* `GUILD_IDS` – comma-separated IDs of servers where the bot will be active.
-* `DEV_GUILD_IDS` – comma-separated IDs of dev/test servers.
-* `DEVELOPER_IDS` – comma-separated IDs of developers allowed to use dev-only commands.
-* `INTERACTION_LOG_CHANNEL_ID` – channel ID for logging command usage.
-* `ERROR_LOG_CHANNEL_ID` – channel ID for logging errors.
-* `RSS_CHANNEL_ID` – channel ID where RSS feeds will be posted.
 * `RSS_FETCH_INTERVAL_MINUTES` – how often the bot fetches feeds (minimum 10 recommended).
 * `RSS_MAX_FEED_COUNT` – max feeds sent per fetch (2–6 recommended).
+* `DISCORD_WEBHOOK_URL` – Discord webhook URL used by the GitHub Actions runner.
 
 ## GitHub Actions Webhook Mode
 
