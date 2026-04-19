@@ -9,6 +9,12 @@ import path from "path";
 export async function sendEmbedWithImage(channel, embed, imageUrl = null, components = []) {
   try {
     const sendOptions = { embeds: [embed] };
+    const isWebhookClient = channel?.constructor?.name === "WebhookClient";
+
+    if (isWebhookClient) {
+      // Required for non-application webhooks to keep non-interactive components (link buttons).
+      sendOptions.withComponents = true;
+    }
 
     // Handle image if provided
     if (imageUrl) {
