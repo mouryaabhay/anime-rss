@@ -1,6 +1,8 @@
 # Anime RSS
 
-[![RSS Feed Webhook](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml/badge.svg)](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml)
+[![RSS Feed Webhook](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml/badge.svg?branch=main)](https://github.com/mouryaabhay/anime-rss/actions/workflows/rss-webhook.yml?query=branch%3Amain)
+
+If the badge shows `no status`, trigger the workflow once from the Actions tab using **Run workflow**.
 
 A GitHub Actions RSS runner built to fetch RSS feeds from Anime News Network and post formatted Discord messages through a webhook. The project is open-source under the MIT License and is intended for private, non-commercial use.
 
