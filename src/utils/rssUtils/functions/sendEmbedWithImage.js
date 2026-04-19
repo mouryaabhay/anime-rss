@@ -3,8 +3,8 @@ import fs from "fs/promises";
 import path from "path";
 
 /**
- * Sends an embed with an optional image attachment and optional components.
- * Handles Windows file locks and missing directory automatically.
+ * Sends an embed with an optional downloaded image attachment.
+ * Falls back to in-memory upload if filesystem attachment fails.
  */
 export async function sendEmbedWithImage(channel, embed, imageUrl = null, components = []) {
   try {

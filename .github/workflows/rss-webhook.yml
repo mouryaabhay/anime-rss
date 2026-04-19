@@ -2,7 +2,7 @@ name: RSS Feed Webhook
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -28,7 +28,10 @@ jobs:
       - name: Fetch RSS and send to Discord webhook
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          RSS_MAX_FEED_COUNT: ${{ vars.RSS_MAX_FEED_COUNT }}
+          RSS_RECENT_LOOKBACK_COUNT: ${{ vars['RSS_RECENT_LOOKBACK_COUNT'] }}
+          RSS_IMAGE_FETCH_RETRIES: ${{ vars['RSS_IMAGE_FETCH_RETRIES'] }}
+          RSS_IMAGE_SUCCESS_TTL_HOURS: ${{ vars['RSS_IMAGE_SUCCESS_TTL_HOURS'] }}
+          RSS_IMAGE_MISS_TTL_MINUTES: ${{ vars['RSS_IMAGE_MISS_TTL_MINUTES'] }}
         run: node ./src/webhookRssRunner.js
 
       - name: Commit updated RSS timestamps

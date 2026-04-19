@@ -17,7 +17,9 @@ const RSS_FEED_TIMESTAMPS_FILE_PATH = path.join(
   "rssFeedTimestamps.json"
 );
 
-// Function to load timestamps from the JSON file
+/**
+ * Loads per-feed last-sent timestamps from disk.
+ */
 export async function loadTimestamps() {
   try {
     const rawData = await fsPromises.readFile(RSS_FEED_TIMESTAMPS_FILE_PATH, "utf-8");
@@ -35,7 +37,9 @@ export async function loadTimestamps() {
   }
 }
 
-// Function to save timestamps to the JSON file
+/**
+ * Persists updated per-feed last-sent timestamps to disk.
+ */
 export async function saveTimestamps(timestamps) {
   try {
     await fsPromises.writeFile(

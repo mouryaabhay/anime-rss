@@ -6,6 +6,9 @@ import rssFeedService from "./services/rssFeedService.js";
 const { FEED_URLS } = config.RSS_FEED;
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
+/**
+ * One-shot webhook runner used by GitHub Actions schedule and workflow_dispatch.
+ */
 async function run() {
   if (!webhookUrl) {
     console.error("[ERROR] DISCORD_WEBHOOK_URL is not set.");

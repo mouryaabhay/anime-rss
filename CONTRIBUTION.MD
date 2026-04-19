@@ -1,6 +1,6 @@
-# Contributing to Aven
+# Contributing to RSS Yuki
 
-Thank you for considering contributing! This project is open-source and contributions to improve the code, fix bugs, or add features are very welcome.
+Thank you for contributing. This repository runs a webhook-only RSS pipeline for Anime News Network feeds.
 
 ---
 
@@ -35,11 +35,11 @@ git checkout -b feature/your-feature-name
 
 ## Guidelines
 
-* Keep the code modular and maintainable.
-* Use consistent naming conventions and formatting.
-* Ensure RSS fetch intervals remain reasonable to avoid overloading servers.
-* Avoid hardcoding tokens or sensitive data. Use `.env` for configuration.
-* Contributions to improve code quality, readability, or efficiency are encouraged.
+* Keep changes webhook-focused. Bot-mode runtime code is out of scope.
+* Prefer small, well-scoped pull requests with clear behavior changes.
+* Do not hardcode secrets; use GitHub Secrets/Variables or local `.env`.
+* Preserve feed ordering and timestamp safety (oldest-first send, successful-send timestamp updates).
+* Keep ANN request volume conservative to avoid `429` throttling.
 
 ---
 
@@ -48,15 +48,11 @@ git checkout -b feature/your-feature-name
 Make sure your `.env` file is properly configured:
 
 ```env
-APP_TOKEN=your_bot_token_here
-GUILD_IDS=
-DEV_GUILD_IDS=
-DEVELOPER_IDS=
-INTERACTION_LOG_CHANNEL_ID=
-ERROR_LOG_CHANNEL_ID=
-RSS_CHANNEL_ID=
-RSS_FETCH_INTERVAL_MINUTES=10
-RSS_MAX_FEED_COUNT=4
+RSS_RECENT_LOOKBACK_COUNT=10
+RSS_IMAGE_FETCH_RETRIES=3
+RSS_IMAGE_SUCCESS_TTL_HOURS=12
+RSS_IMAGE_MISS_TTL_MINUTES=120
+DISCORD_WEBHOOK_URL=
 ```
 
-**Note:** Keep the `RSS_FETCH_INTERVAL_MINUTES` above 10 and `RSS_MAX_FEED_COUNT` between 2–6 to prevent spam and rate limits.
+For GitHub Actions, prefer repository **Secret** `DISCORD_WEBHOOK_URL` and repository **Variables** for other RSS settings.
